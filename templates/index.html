@@ -9,10 +9,29 @@
     <a href="{% url 'index' %}" class="navbar-brand">HeartDiseasePrediction</a>
   </div>
 </nav>
+<div class="container">
+  <div class="mt-2">
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
 <div class="card container mt-5">
     <div class="card-body text-center">
       <h1 class="mb-3 mt-4">Welcome</h1>
-      <a href="" class="btn btn-primary mb-4">Log In</a>
+      <a href="{% url 'login' %}" class="btn btn-primary mb-4">Log In</a>
       <a href="{% url 'register' %}" class="btn btn-secondary mb-4">Register</a>
     </div>
   </div>
