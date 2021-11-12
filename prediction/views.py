@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -21,7 +22,7 @@ def register(request):
 
     return render(request, 'registration/register.html', {'form': f})
 
-
+@login_required
 #Home
 def home(request):
     return render(request, "home.html")
