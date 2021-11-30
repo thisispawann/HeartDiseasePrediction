@@ -7,14 +7,19 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a href="{% url 'index' %}" class="navbar-brand">HeartDiseasePrediction</a>
+    <a href="{% url 'home' %}" class="navbar-brand">HeartDiseasePrediction</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}"
+            >Heart Analysis</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
+          <a class="nav-link" href="#">View Doctor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Feedback</a>
         </li>
       </ul>
       <ul class="navbar-nav">
@@ -41,4 +46,107 @@
     </div>
   </div>
 </nav>
+<div class="main-wrapper" style="margin-left: 20rem">
+<div class=" container title-wrapper mt-4">
+  <h2>Please fill the following data accurately!</h2>
+</div>
+<div class="container mt-5">
+  <form action="{% url 'result' %}"
+  {% csrf_token %}
+
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>Age</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="age" type="number" required placeholder="Your age">
+    </div>
+  </div> <br>
+
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>Sex</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="sex" type="number" required placeholder="Gender: 0 = Female & 1 = Male">
+    </div>
+  </div> <br>
+
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>cp</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="cp" type="number" required placeholder="Your cp">
+    </div>
+  </div> <br>
+
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>trestbps</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="trestbps" type="number" required placeholder="Your blood pressure level">
+    </div>
+  </div> <br>
+
+   <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>chol</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="chol" type="number" required placeholder="Cholestrol">
+    </div>
+  </div> <br>
+
+   <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>fbs</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="fbs" type="number" required placeholder="fbs">
+    </div>
+  </div> <br>
+
+   <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>restecg</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="restecg" type="number" required placeholder="Your ecg">
+    </div>
+  </div> <br>
+
+   <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>thalach</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="thalach" type="number" required placeholder="thalach">
+    </div>
+  </div> <br>
+  
+   <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>exang</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="exang" type="number" required placeholder=" exang">
+    </div>
+  </div> <br>
+  
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>oldpeak</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="oldpeak" type="number" required placeholder=" oldpeak">
+    </div>
+  </div> <br>
+
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>slope</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="slope" type="number" required placeholder=" slope">
+    </div>
+  </div> <br>
+  
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>ca</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="ca" type="number" required placeholder=" ca">
+    </div>
+  </div> <br>
+  
+  <div class="col-6 form-group row">
+    <label for="" class="col-sm-2 col-form-label"l>thal</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="" name="thal" type="number" required placeholder=" thal">
+    </div>
+  </div> <br>
+  {% comment %} <input type="submit" name="" value="submit"> {% endcomment %}
+  <button type="submit" class="btn btn-dark">Continue</button>
+  </form>
+</div>
+</div>
 {% endblock %}
