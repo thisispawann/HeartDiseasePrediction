@@ -1,11 +1,12 @@
 
 from django.urls import path
-from prediction.views import index, register, home, result
+from prediction.views import index, register, home, result, starter
 from prediction import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', starter, name='starter'),
+    path('index/', index, name='index'),
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('home/', home, name='home'),

@@ -4,11 +4,15 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import joblib
 
+
 # Create your views here.
 def index(request):
     return render(request, "index.html")
 
 
+#Starter
+def starter(request):
+    return render(request, "starter.html")
 #Register
 def register(request):
     if request.method == 'POST':

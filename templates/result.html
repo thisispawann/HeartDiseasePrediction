@@ -1,12 +1,49 @@
-<h4>this is our result page:</h4> <br>
+{% extends 'base.html' %} {% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a href="{% url 'home' %}" class="navbar-brand">HeartDiseasePrediction</a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <div class="white-color hover-orange size-24px">
+            <span>{{ user }}</span>
+            <i class="fa fa-user"></i>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a href="{% url 'change_password' %}" class="dropdown-item"
+            >Change Password</a
+          >
+          <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+<div class="card container mt-5">
+    <div class="card-body text-center">
+      
+     <h4>Result page:</h4> <br>
 
-<h6>the data you just entered is : {{lis}}</h6>
+<h6>The data you just entered is : {{lis}}</h6>
 
 The result is {{ans}}
 <pre>
 so type of heart disease
---1. You have predicted heart disease
---0. you have not predicted heart disease
+1 : You have predicted heart disease
+0 : you have not predicted heart disease
 </pre>
 
 <a href={% url 'home' %}> Back to home </a>
+    </div>
+  </div>
+
+{% endblock %}
