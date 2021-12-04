@@ -32,7 +32,12 @@
   </div>
   <div class="card container mt-5">
     <div class="card-body text-center">
-      <h1 class="mb-3 mt-4">Welcome</h1>
+      <h1 class="mb-3 mt-4 mb-4">Welcome</h1>
+      <a
+        href="http://127.0.0.1:8000/admin/login/?next=/admin/auth/user/"
+        class="btn btn-dark mb-4"
+        >Admin Log In</a
+      >
       <a href="{% url 'login' %}" class="btn btn-primary mb-4">Log In</a>
       <a href="{% url 'register' %}" class="btn btn-secondary mb-4">Sign Up</a>
     </div>

@@ -21,9 +21,9 @@
 .button{
     height: 3rem;
     width: 12rem;
-    background: var(--blue);
+    background: #1a73e8;
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     text-transform: capitalize;
     cursor: pointer;
     position: relative;
@@ -31,6 +31,7 @@
     overflow: hidden;
     border: .5rem;
     margin: 1rem 0;
+    /* border-radius: 3px; */
 }
 
 .button::before{
@@ -79,7 +80,7 @@ header a:hover{
     color: var(--blue);
 }
 header .container .logo{
-    font-size: 2rem;
+    font-size: 1.3em;
 }
 
 header .container .logo span{
@@ -103,7 +104,7 @@ header .nav ul li a{
 }
 
 header .fa-bars{
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: var(--blue);
     cursor: pointer;
     display: none;

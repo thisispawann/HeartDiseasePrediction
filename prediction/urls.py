@@ -3,6 +3,10 @@ from django.urls import path
 from prediction.views import index, register, home, result, starter
 from prediction import views
 from django.contrib.auth import views as auth_views
+from django.contrib import admin
+
+admin.site.site_header = 'Admin Log In'
+admin.site.index_title = 'Heart Disease Prediction'
 
 urlpatterns = [
     path('', starter, name='starter'),

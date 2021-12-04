@@ -13,6 +13,8 @@ def index(request):
 #Starter
 def starter(request):
     return render(request, "starter.html")
+
+
 #Register
 def register(request):
     if request.method == 'POST':
