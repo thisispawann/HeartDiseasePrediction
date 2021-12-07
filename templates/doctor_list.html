@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% block body %}
+
+<style>
+  .form {
+    display: flex;
+    justify-content: center;
+  }
+  .jumbo {
+    background: #dddddd;
+    height: 80px;
+    text-align: center;
+  }
+  .dropdown-toggle::after {
+    content: none;
+  }
+</style>
+
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  style="top: 0; position: sticky"
+>
+  <div class="container">
+    <a href="{% url 'home' %}" class="navbar-brand">HeartDiseasePrediction</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}"
+            >Heart Analysis</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'DoctorList'%}">View Doctor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Feedback</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <div class="white-color hover-orange size-24px">
+              <span> Hello! {{ user }}</span>
+              <i class="fa fa-user-circle"></i>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a href="{% url 'change_password' %}" class="dropdown-item"
+              >Change Password</a
+            >
+            <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid mt-5">
+  <div class="container jumbo">
+    <h1 class="display-6">All Doctor Details</h1>
+  </div>
+</div>
+
+<div class="container form mt-4">
+  <div class="col-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"><b>S.N.</b></th>
+          <th scope="col"><b>Doctor Name</b></th>
+          <th scope="col"><b>Email</b></th>
+          <th scope="col"><b>Hospital Name</b></th>
+          <th scope="col"><b>Address</b></th>
+          <th scope="col"><b>Mobile</b></th>
+          <th scope="col"><b>Age</b></th>
+          <th scope="col"><b>Gender</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td class="table-danger">{{post.name}}</td>
+          <td>{{post.email}}</td>
+          <td class="table-success">{{post.hospital_name}}</td>
+          <td>{{post.address}}</td>
+          <td class="table-warning">{{post.mobile}}</td>
+          <td>{{post.age}}</td>
+          <td>{{post.gender}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+# from algorithm import X_test, Y_pred
+# from knn import X_test, Y_pred
+from .models import Doctor
 import joblib
 
 
@@ -34,9 +38,15 @@ def register(request):
 def home(request):
     return render(request, "home.html")
 
+#Doctor
+def DoctorList(request):
+    all_lists = Doctor.objects.all().order_by('name')
+    return render(request, 'doctor_list.html', {'posts': all_lists})
+
+
 #Result
 def result(request):
-    cls = joblib.load('heartdata.sav')
+    cls = joblib.load('heart.sav')
     lis = []
     lis.append(request.GET['age'])
     lis.append(request.GET['sex'])
@@ -57,6 +67,8 @@ def result(request):
     ans = cls.predict([lis])
     return render(request, "result.html", {'ans':ans, 'lis':lis})
 
+    
+    
 
 
 
