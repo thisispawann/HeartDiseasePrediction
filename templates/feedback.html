@@ -1,20 +1,9 @@
 {% extends 'base.html' %} {% block body %}
-
 <style>
-  .form {
-    display: flex;
-    justify-content: center;
-  }
-  .jumbo {
-    background: #dddddd;
-    height: 80px;
-    text-align: center;
-  }
   .dropdown-toggle::after {
     content: none;
   }
 </style>
-
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-dark"
   style="top: 0; position: sticky"
@@ -29,10 +18,10 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'DoctorList'%}">View Doctor</a>
+          <a class="nav-link" href="{% url 'DoctorList' %}">View Doctor</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'feedback'%}">Feedback</a>
+          <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
         </li>
       </ul>
       <ul class="navbar-nav">
@@ -59,43 +48,69 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron jumbotron-fluid mt-5">
-  <div class="container jumbo">
-    <h1 class="display-6">All Doctor Details</h1>
-  </div>
-</div>
+<h1 class="text-center mt-4">Feedback Form</h1>
+<div class="mt-2" style="width: 80%; margin: 0 auto">
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
 
-<div class="container form mt-4">
-  <div class="col-12">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col"><b>S.N.</b></th>
-          <th scope="col"><b>Doctor Name</b></th>
-          <th scope="col"><b>Email</b></th>
-          <th scope="col"><b>Hospital Name</b></th>
-          <th scope="col"><b>Address</b></th>
-          <th scope="col"><b>Mobile</b></th>
-          <th scope="col"><b>Age</b></th>
-          <th scope="col"><b>Gender</b></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for post in posts %}
-        <tr>
-          <th scope="row">{{forloop.counter}}</th>
-          <td class="table-danger">{{post.name}}</td>
-          <td>{{post.email}}</td>
-          <td class="table-success">{{post.hospital_name}}</td>
-          <td>{{post.address}}</td>
-          <td class="table-warning">{{post.mobile}}</td>
-          <td>{{post.age}}</td>
-          <td>{{post.gender}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<div class="container" style="width: 60%">
+  <form class="" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="fname" class="form-label">Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="jhon doe"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Email address</label
+      >
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Feedback</label
+      >
+      <textarea
+        class="form-control"
+        name="feedback"
+        id="exampleFormControlTextarea1"
+        rows="5"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <input
+        type="submit"
+        class="btn btn-primary btn-lg mt-1 ml-4"
+        value="Submit"
+      />
+    </div>
+  </form>
 </div>
 <section class="footer mt-5">
   <div class="container mt-5">
@@ -104,9 +119,10 @@
         <a href="#" class="logo"
           ><span>H</span>eart<span>D</span>isease<span>P</span>rediction.</a
         >
-        <p style="font-size:1rem">
-          Heart Disease Prediction System has simple user friendly, robust interface.
-          User can easily navigate through Heart Disease Prediction System and make maximum use of it to get benefit.
+        <p style="font-size: 1rem">
+          Heart Disease Prediction System has simple user friendly, robust
+          interface. User can easily navigate through Heart Disease Prediction
+          System and make maximum use of it to get benefit.
         </p>
       </div>
       <div class="col-md-4 text-center">

@@ -17,3 +17,13 @@ class Doctor(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+#Feedback
+class Feedback(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    feedback = models.TextField()
+
+    def __str__(self):
+        return self.name

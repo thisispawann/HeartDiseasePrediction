@@ -1,12 +1,13 @@
 
 from django.urls import path
-from prediction.views import index, register, home, result, starter, DoctorList
+from prediction.views import index, register, home, result, starter, DoctorList, feedback
 from prediction import views
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 
 admin.site.site_header = 'Admin Log In'
 admin.site.index_title = 'Heart Disease Prediction'
+
 
 urlpatterns = [
     path('', starter, name='starter'),
@@ -18,5 +19,6 @@ urlpatterns = [
     path('change_password/', auth_views.PasswordChangeView.as_view(), name='change_password'),
     path('password_change_done', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('result/', result, name='result'),
-    path('DoctorList/', DoctorList, name='DoctorList')
+    path('DoctorList/', DoctorList, name='DoctorList'),
+    path('feedback/', feedback, name='feedback'),
 ]

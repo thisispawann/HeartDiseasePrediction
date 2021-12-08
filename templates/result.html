@@ -1,4 +1,9 @@
 {% extends 'base.html' %} {% block body %}
+<style>
+  .dropdown-toggle::after {
+    content: none;
+  }
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a href="{% url 'home' %}" class="navbar-brand">HeartDiseasePrediction</a>
@@ -14,7 +19,7 @@
         >
           <div class="white-color hover-orange size-24px">
             <span>{{ user }}</span>
-            <i class="fa fa-user"></i>
+            <i class="fa fa-user-circle"></i>
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-end">

@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -5,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # from algorithm import X_test, Y_pred
 # from knn import X_test, Y_pred
-from .models import Doctor
+from .models import Doctor, Feedback
 import joblib
 
 
@@ -43,6 +44,23 @@ def DoctorList(request):
     all_lists = Doctor.objects.all().order_by('name')
     return render(request, 'doctor_list.html', {'posts': all_lists})
 
+#Feedback
+def feedback(request):
+    if request.method == "POST":
+        feed = Feedback()
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        feedback = request.POST.get('feedback')
+        
+        feed.name = name
+        feed.email = email
+        feed.feedback = feedback
+        feed.save()
+        #return HttpResponse("<p class="alert alert-success" role="alert"> Thank you for your messages! </p>")
+        messages.success(request, 'Thank you for your feedback! Much Appreciated')
+        return redirect('feedback')
+    
+    return render(request, 'feedback.html')
 
 #Result
 def result(request):
